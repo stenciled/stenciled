@@ -1,18 +1,18 @@
 {
-  "name": "@stenciled/theme-ui",
+  "name": "@stenciled/box",
   "version": "0.1.0",
   "private": true,
-  "description": "Stenciled Theme UI utilities.",
+  "description": "Stenciled box component.",
   "source": "src/index.js",
-  "main": "dist/theme-ui.js",
-  "module": "dist/theme-ui.esm.js",
+  "main": "dist/box.js",
+  "module": "dist/box.esm.js",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/stenciled/stenciled.git",
-    "directory": "packages/theme-ui"
+    "directory": "packages/box"
   },
-  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/theme-ui#readme",
+  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/box#readme",
   "scripts": {
     "clean": "yarn cache clean",
     "prepare": "microbundle --no-compress -o dist",
