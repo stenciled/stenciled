@@ -1,18 +1,18 @@
 {
-  "name": "@stenciled/box",
+  "name": "@stenciled/babel",
   "version": "0.1.0",
   "private": true,
-  "description": "Stenciled box component.",
+  "description": "Stenciled Babel plugin.",
   "source": "src/index.js",
-  "main": "dist/box.js",
-  "module": "dist/box.esm.js",
+  "main": "dist/babel.js",
+  "module": "dist/babel.esm.js",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/stenciled/stenciled.git",
-    "directory": "packages/box"
+    "directory": "packages/babel"
   },
-  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/box#readme",
+  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/babel#readme",
   "scripts": {
     "clean": "yarn cache clean",
     "prepare": "microbundle --no-compress -o dist",
