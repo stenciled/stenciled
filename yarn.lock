@@ -3737,6 +3737,14 @@ babel-loader@^8.0.6:
     mkdirp "^0.5.1"
     pify "^4.0.1"
 
+babel-plugin-add-imports@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-add-imports/-/babel-plugin-add-imports-1.0.3.tgz#9583e8a530a93133735d8510997fd7c2380a746f"
+  integrity sha512-8r/TOtPRpXhjC2K8aMrrSTEIcV3XG+B1+LzA08BM1Tq9LXZnXcLyDdySik9ySGYce5nO9CS1wFkOp6PaIhGvsg==
+  dependencies:
+    lodash.ismatch "^4.4.0"
+    lodash.isplainobject "^4.0.6"
+
 babel-plugin-add-react-displayname@^0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/babel-plugin-add-react-displayname/-/babel-plugin-add-react-displayname-0.0.5.tgz#339d4cddb7b65fd62d1df9db9fe04de134122bd5"
@@ -9436,6 +9444,11 @@ lodash.ismatch@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.ismatch/-/lodash.ismatch-4.4.0.tgz#756cb5150ca3ba6f11085a78849645f188f85f37"
   integrity sha1-dWy1FQyjum8RCFp4hJZF8Yj4Xzc=
+
+lodash.isplainobject@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
+  integrity sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
