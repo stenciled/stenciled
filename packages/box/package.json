@@ -1,6 +1,6 @@
 {
   "name": "@stenciled/box",
-  "version": "0.1.0",
+  "version": "0.1.1-alpha.0",
   "private": true,
   "description": "Stenciled box component.",
   "source": "src/index.js",
