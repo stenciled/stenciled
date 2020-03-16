@@ -1,0 +1,23 @@
+{
+  "name": "example-use-theme",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "storybook": "start-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@storybook/react": "^5.3.14",
+    "@theme-ui/color-modes": "^0.3.1",
+    "@theme-ui/preset-future": "^0.3.0",
+    "babel-loader": "^8.0.6"
+  },
+  "dependencies": {
+    "@stenciled/theme-ui": "^0.1.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "theme-ui": "^0.3.1"
+  }
+}
