@@ -37,23 +37,3 @@ export const withThemeProvider = () => (
     </ColorModeSwitcher>
   </Themed>
 )
-
-// export const Test = () => {
-//   return (
-//     <Themed
-//       theme={{
-//         ...defaultTheme,
-//         secondary: {
-//           background: '#0c0',
-//         },
-//         buttons: {
-//           secondary: {
-//             background: '#c00',
-//           },
-//         },
-//       }}
-//     >
-//       <Button variant="secondary">Test</Button>
-//     </Themed>
-//   )
-// }
