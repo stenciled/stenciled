@@ -1,4 +1,6 @@
+import React from 'react'
 import { jsx } from '@theme-ui/core'
+import { Wrapper } from './Wrapper'
 
 export const stenciled = (type, props, ...children) => {
   if (!props) {
@@ -8,9 +10,13 @@ export const stenciled = (type, props, ...children) => {
   const { as, sx } = props
   const variant = sx ? sx.variant : undefined
 
-  console.log('as', as)
-  console.log('variant', variant)
+  if (!as && !variant) {
+    return jsx(type, props, ...children)
+  }
 
-  // TODO: wrap in component that takes as and variant props
-  return jsx(type, props, ...children)
+  return (
+    <Wrapper as={as} variant={variant}>
+      {jsx(type, props, ...children)}
+    </Wrapper>
+  )
 }
