@@ -1,32 +1,34 @@
-const { replaceJsxPragmas } = require('./pragma')
-const {
-  addStenciledImport,
-  isJsxImport,
-  createStenciledImportDeclaration,
-} = require('./imports')
+const { isJsxImport, createStenciledImportDeclaration } = require('./imports')
+
+const removeJsx = path => {
+  const { node } = path
+
+  // remove jsx import specifier
+  const specifiers = (node.specifiers || []).filter(
+    s => s.imported.name !== 'jsx'
+  )
+
+  // if no import specifiers remaining,
+  // then remove the import declaration
+  if (specifiers.length === 0) {
+    path.remove()
+    return
+  }
+
+  node.specifiers = specifiers
+}
 
 const plugin = ({ types: t }) => {
   return {
     name: 'stenciled',
     visitor: {
-      Program(path) {
-        replaceJsxPragmas(path.node)
-
-        if (path.node.body.length === 0) {
-          addStenciledImport(path)
-        }
-      },
       ImportDeclaration(path) {
         if (isJsxImport(path.node)) {
-          console.log('found!')
           path.insertAfter(createStenciledImportDeclaration(t))
+          removeJsx(path)
         }
       },
     },
-    // post(path) {
-    //   console.log('\n')
-    //   console.log(path)
-    // },
   }
 }
 

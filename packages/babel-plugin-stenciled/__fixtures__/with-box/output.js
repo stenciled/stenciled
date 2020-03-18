@@ -1,4 +1,4 @@
-/** @jsx _stenciled */
+/** @jsx jsx */
 import React from 'react'
-import { jsx, Box } from 'theme-ui'
-import { stenciled as _stenciled } from '@stenciled/theme-ui-visualiser'
+import { Box } from 'theme-ui'
+import { stenciled as jsx } from '@stenciled/theme-ui-visualiser'
