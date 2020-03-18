@@ -32,6 +32,7 @@ const replaceJsxPragmas = node => {
 
   // TODO: regex replace
   jsxPragmaComments.forEach(c => {
+    console.log('replacing')
     c.value = '* @jsx _stenciled '
   })
 }

@@ -2,6 +2,7 @@
   "name": "@stenciled/theme-ui-visualiser",
   "version": "0.1.1-alpha.0",
   "description": "Stenciled Theme UI visualiser.",
+  "private": true,
   "source": "src/index.js",
   "main": "dist/theme-ui-visualiser.js",
   "module": "dist/theme-ui-visualiser.esm.js",

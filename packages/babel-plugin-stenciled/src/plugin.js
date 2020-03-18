@@ -18,10 +18,15 @@ const plugin = ({ types: t }) => {
       },
       ImportDeclaration(path) {
         if (isJsxImport(path.node)) {
+          console.log('found!')
           path.insertAfter(createStenciledImportDeclaration(t))
         }
       },
     },
+    // post(path) {
+    //   console.log('\n')
+    //   console.log(path)
+    // },
   }
 }
 
