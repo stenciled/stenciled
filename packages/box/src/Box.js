@@ -14,7 +14,6 @@ const Wrapper = ({ as, variant, children }) => (
 )
 
 export const Box = ({ children, ...props }) => {
-  console.log(props)
   const { as, variant } = props
   return (
     <Wrapper as={as} variant={variant}>
