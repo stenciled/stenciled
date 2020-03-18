@@ -36,12 +36,6 @@ const replaceJsxPragmas = node => {
   })
 }
 
-const addStenciledImport = path => {
-  return addNamed(path, 'stenciled', '@stenciled/theme-ui-visualise', {
-    nameHint: 'stenciled',
-  })
-}
-
 module.exports = {
   replaceJsxPragmas,
 }

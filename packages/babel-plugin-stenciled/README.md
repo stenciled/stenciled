@@ -1,1 +1,1 @@
-# box
+# babel-plugin-stenciled

@@ -1,7 +1,7 @@
 const { addNamed } = require('@babel/helper-module-imports')
 
 const addStenciledImport = path => {
-  return addNamed(path, 'stenciled', '@stenciled/theme-ui-visualise', {
+  return addNamed(path, 'stenciled', '@stenciled/theme-ui-visualiser', {
     nameHint: 'stenciled',
   })
 }
@@ -9,7 +9,7 @@ const addStenciledImport = path => {
 const createStenciledImportDeclaration = t =>
   t.importDeclaration(
     [t.importSpecifier(t.identifier('_stenciled'), t.identifier('stenciled'))],
-    t.stringLiteral('@stenciled/theme-ui-visualise')
+    t.stringLiteral('@stenciled/theme-ui-visualiser')
   )
 
 const isJsxImport = node => {
