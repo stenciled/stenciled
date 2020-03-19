@@ -22,7 +22,26 @@ const isJsxImport = node => {
   return false
 }
 
+const removeJsx = path => {
+  const { node } = path
+
+  // remove jsx import specifier
+  const specifiers = (node.specifiers || []).filter(
+    s => s.imported.name !== 'jsx'
+  )
+
+  // if no import specifiers remaining,
+  // then remove the import declaration
+  if (specifiers.length === 0) {
+    path.remove()
+    return
+  }
+
+  node.specifiers = specifiers
+}
+
 module.exports = {
   isJsxImport,
   createStenciledImportDeclaration,
+  removeJsx,
 }
