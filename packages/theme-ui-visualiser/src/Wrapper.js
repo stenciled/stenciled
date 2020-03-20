@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@theme-ui/core'
+import { WrapperContext } from './context'
 
 const getAsProps = as => {
   if (!as) {
@@ -56,15 +57,25 @@ export const Wrapper = ({ as, variant, children }) => {
   }
 
   return (
-    <div
-      css={{
-        position: 'relative',
-        ...(variant ? variantStyle : {}),
-        ...getAsProps(as),
-        ...getVariantProps(variant),
+    <WrapperContext.Consumer>
+      {({ enabled }) => {
+        if (!enabled) {
+          return children
+        }
+
+        return (
+          <div
+            css={{
+              position: 'relative',
+              ...(variant ? variantStyle : {}),
+              ...getAsProps(as),
+              ...getVariantProps(variant),
+            }}
+          >
+            {children}
+          </div>
+        )
       }}
-    >
-      {children}
-    </div>
+    </WrapperContext.Consumer>
   )
 }

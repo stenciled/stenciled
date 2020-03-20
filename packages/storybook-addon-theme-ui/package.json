@@ -27,6 +27,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.27",
     "@stenciled/babel-preset-stenciled": "^0.1.1-alpha.0",
+    "@stenciled/theme-ui-visualiser": "^0.1.1-alpha.0",
     "@storybook/addons": "^5.3.12",
     "@storybook/api": "^5.3.12",
     "@storybook/client-logger": "^5.3.12",
