@@ -3,7 +3,7 @@ import { addons, makeDecorator } from '@storybook/addons'
 import { WrapperContext } from '@stenciled/theme-ui-visualiser'
 
 const Decorator = ({ story, options }) => {
-  const [enabled, setEnabled] = useState('enabled')
+  const [enabled, setEnabled] = useState(false)
   const [currentStory] = useState(story)
   const [channel] = useState(addons.getChannel())
 
