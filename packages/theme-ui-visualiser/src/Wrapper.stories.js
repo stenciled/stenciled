@@ -1,28 +1,56 @@
-import React from 'react'
+/** @jsx jsx */
+import { jsx } from '@theme-ui/core'
 import { Wrapper } from './Wrapper'
 
 export default { title: 'Wrapper' }
 
 export const withDefault = () => (
   <Wrapper>
-    <p>Test</p>
+    <div>Test</div>
   </Wrapper>
 )
 
 export const withAs = () => (
   <Wrapper as="nav">
-    <p>Test</p>
+    <div>Test</div>
   </Wrapper>
 )
 
 export const withVariant = () => (
   <Wrapper variant="variant">
-    <p>Test</p>
+    <div>Test</div>
   </Wrapper>
 )
 
 export const withAsAndVariant = () => (
   <Wrapper as="nav" variant="variant">
-    <p>Test</p>
+    <div>Test</div>
+  </Wrapper>
+)
+
+export const with100PercentWidth = () => (
+  <Wrapper variant="variant">
+    <div sx={{ width: '100%' }}>c</div>
+  </Wrapper>
+)
+
+export const withFixedWidth = () => (
+  <Wrapper variant="variant">
+    <div sx={{ width: '10px' }}>c</div>
+  </Wrapper>
+)
+
+export const withInlineBlock = () => (
+  <Wrapper variant="variant">
+    <div sx={{ display: 'inline-block' }}>c</div>
+  </Wrapper>
+)
+
+export const withMultipleChildren = () => (
+  <Wrapper variant="variant">
+    <div>one</div>
+    <div>two</div>
+    <div>three</div>
+    <div>four</div>
   </Wrapper>
 )

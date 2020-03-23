@@ -52,8 +52,7 @@ export const Wrapper = ({ as, variant, children }) => {
   }
 
   const variantStyle = {
-    border: '1px solid #ccc',
-    borderStyle: 'dashed',
+    border: '1px dashed #ccc',
   }
 
   return (
