@@ -1,52 +1,94 @@
 /** @jsx jsx */
+import React from 'react'
 import { jsx } from '@theme-ui/core'
 import { WrapperContext } from './context'
 
-const getAsProps = as => {
-  if (!as) {
-    return {}
-  }
-
-  return {
-    '::after': {
-      content: `"${as}"`,
-      fontSize: '10px',
-      fontFamily: 'Arial',
-      color: '#666',
-      backgroundColor: '#eee',
-      padding: '0.2rem 0.3rem',
+const Title = ({ width, children }) => (
+  <p
+    title={children}
+    css={{
+      width,
       margin: 0,
-      position: 'absolute',
-      right: 0,
-      bottom: 0,
-      opacity: '0.9',
-    },
-  }
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textAlign: 'center',
+    }}
+  >
+    {children}
+  </p>
+)
+
+const ExpandedInfo = ({ as, variant, width, height }) => {
+  return (
+    <div
+      css={{
+        height,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#fff',
+        userSelect: 'none',
+      }}
+    >
+      {variant && <Title width={width}>{variant}</Title>}
+      {as && <Title width={width}>as: {as}</Title>}
+    </div>
+  )
 }
 
-const getVariantProps = variant => {
-  if (!variant) {
-    return {}
+const Expander = ({ as, variant, expanded, onClick }) => {
+  const defaultProps = {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    backgroundColor: '#666',
+    opacity: 0.8,
+    margin: 0,
+    padding: 0,
+    cursor: 'pointer',
+    fontFamily: 'Arial',
+    fontSize: '12px',
+    transition: 'width 0.2s ease-in-out, height 0.2s ease-in-out',
   }
 
-  return {
-    '::before': {
-      content: `"${variant}"`,
-      fontSize: '10px',
-      fontFamily: 'Arial',
-      color: '#666',
-      backgroundColor: '#eee',
-      padding: '0.2rem 0.3rem',
-      margin: 0,
-      position: 'absolute',
-      right: 0,
-      top: 0,
-      opacity: '0.9',
-    },
-  }
+  const expandedWidth = '100px'
+  const expandedHeight = '70px'
+
+  const expandedProps = expanded
+    ? {
+        width: expandedWidth,
+        height: expandedHeight,
+        padding: '0.5rem',
+      }
+    : {
+        width: '10px',
+        height: '10px',
+      }
+
+  return (
+    <div
+      css={{
+        ...Object.assign({}, defaultProps, expandedProps),
+      }}
+      onClick={() => onClick(!expanded)}
+    >
+      {expanded && (
+        <ExpandedInfo
+          as={as}
+          variant={variant}
+          width={expandedWidth}
+          height={expandedHeight}
+        />
+      )}
+    </div>
+  )
 }
 
 export const Wrapper = ({ as, variant, children }) => {
+  const [expanded, setExpanded] = React.useState(false)
+
   if (!as && !variant) {
     return children
   }
@@ -65,13 +107,18 @@ export const Wrapper = ({ as, variant, children }) => {
         return (
           <div
             css={{
-              position: 'relative',
               ...(variant ? variantStyle : {}),
-              ...getAsProps(as),
-              ...getVariantProps(variant),
             }}
           >
-            {children}
+            <div css={{ position: 'relative' }}>
+              <Expander
+                expanded={expanded}
+                as={as}
+                variant={variant}
+                onClick={v => setExpanded(v)}
+              />
+              {children}
+            </div>
           </div>
         )
       }}

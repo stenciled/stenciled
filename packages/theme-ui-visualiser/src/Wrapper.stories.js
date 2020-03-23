@@ -54,3 +54,12 @@ export const withMultipleChildren = () => (
     <div>four</div>
   </Wrapper>
 )
+
+export const withLongVariant = () => (
+  <Wrapper variant="thisisareallylongvariant.thatismadeupofmanyparts.thatarereallyverylongindeed">
+    <div>one</div>
+    <div>two</div>
+    <div>three</div>
+    <div>four</div>
+  </Wrapper>
+)
