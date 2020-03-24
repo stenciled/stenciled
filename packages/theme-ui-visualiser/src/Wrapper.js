@@ -87,18 +87,9 @@ const Expander = ({ as, variant, expanded, onClick }) => {
   )
 }
 
-export const Wrapper = ({ as, variant, children }) => {
-  const [expanded, setExpanded] = React.useState(false)
-
-  if (!as && !variant) {
-    return children
-  }
-
-  const variantStyle = {
-    border: '1px dashed #ccc',
-  }
-
+const useMaxChildWidth = children => {
   let measurements = []
+
   const clonedChildren = React.Children.map(children, child => {
     const [ref, props] = useMeasure()
 
@@ -121,6 +112,21 @@ export const Wrapper = ({ as, variant, children }) => {
     })
   )
 
+  return { clonedChildren, width: maxWidth === 0 ? null : maxWidth }
+}
+
+export const Wrapper = ({ as, variant, children }) => {
+  const { clonedChildren, width } = useMaxChildWidth(children)
+  const [expanded, setExpanded] = React.useState(false)
+
+  if (!as && !variant) {
+    return children
+  }
+
+  const variantStyle = {
+    border: '1px dashed #ccc',
+  }
+
   return (
     <WrapperContext.Consumer>
       {({ enabled }) => {
@@ -131,7 +137,7 @@ export const Wrapper = ({ as, variant, children }) => {
         return (
           <div
             css={{
-              width: maxWidth === 0 ? null : `${maxWidth}px`,
+              width: `${width}px`,
               ...(variant ? variantStyle : {}),
             }}
           >
