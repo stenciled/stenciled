@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { addons, makeDecorator } from '@storybook/addons'
 import { WrapperContext } from '@stenciled/theme-ui-visualiser'
 
 const Decorator = ({ story, options }) => {
-  const [enabled, setEnabled] = useState(false)
-  const [currentStory] = useState(story)
-  const [channel] = useState(addons.getChannel())
+  const [enabled, setEnabled] = React.useState(false)
+  const [currentStory] = React.useState(story)
+  const [channel] = React.useState(addons.getChannel())
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleEnabledChange = enabled => {
       setEnabled(enabled)
     }

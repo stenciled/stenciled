@@ -1,6 +1,6 @@
 /** @jsx jsx */
+import React from 'react'
 import { jsx } from '@emotion/core'
-import { useState } from 'react'
 import { IconButton } from '@storybook/components'
 
 const ThemeUIIcon = ({ ...props }) => (
@@ -29,7 +29,7 @@ const ThemeUIIcon = ({ ...props }) => (
 )
 
 export const Tool = ({ channel }) => {
-  const [enabled, setEnabled] = useState(false)
+  const [enabled, setEnabled] = React.useState(false)
 
   const setAndEmitEnabled = enabled => {
     setEnabled(enabled)
