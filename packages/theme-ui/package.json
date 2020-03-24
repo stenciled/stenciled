@@ -5,6 +5,7 @@
   "source": "src/index.js",
   "main": "dist/theme-ui.js",
   "module": "dist/theme-ui.esm.js",
+  "private": true,
   "license": "MIT",
   "repository": {
     "type": "git",
