@@ -117,7 +117,7 @@ export const Wrapper = ({ as, variant, children }) => {
         return 0
       }
 
-      return m.props.width
+      return m.props.width || 0
     })
   )
 

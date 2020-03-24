@@ -63,3 +63,9 @@ export const withLongVariant = () => (
     <div>four</div>
   </Wrapper>
 )
+
+export const withOverflowHidden = () => (
+  <Wrapper as="nav" variant="variant">
+    <div sx={{ overflow: 'hidden' }}>c</div>
+  </Wrapper>
+)
