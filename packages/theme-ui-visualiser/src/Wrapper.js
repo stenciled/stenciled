@@ -2,6 +2,7 @@
 import React from 'react'
 import { jsx } from '@theme-ui/core'
 import { WrapperContext } from './context'
+import { useMeasure } from 'react-use'
 
 const Title = ({ width, children }) => (
   <p
@@ -97,6 +98,29 @@ export const Wrapper = ({ as, variant, children }) => {
     border: '1px dashed #ccc',
   }
 
+  let measurements = []
+  const clonedChildren = React.Children.map(children, child => {
+    const [ref, props] = useMeasure()
+
+    measurements.push({
+      ref,
+      props,
+    })
+
+    return React.cloneElement(child, { ref })
+  })
+
+  const maxWidth = Math.max.apply(
+    Math,
+    measurements.map(m => {
+      if (!m.props) {
+        return 0
+      }
+
+      return m.props.width
+    })
+  )
+
   return (
     <WrapperContext.Consumer>
       {({ enabled }) => {
@@ -107,6 +131,7 @@ export const Wrapper = ({ as, variant, children }) => {
         return (
           <div
             css={{
+              width: maxWidth === 0 ? null : `${maxWidth}px`,
               ...(variant ? variantStyle : {}),
             }}
           >
@@ -117,7 +142,7 @@ export const Wrapper = ({ as, variant, children }) => {
                 variant={variant}
                 onClick={v => setExpanded(v)}
               />
-              {children}
+              {clonedChildren}
             </div>
           </div>
         )
