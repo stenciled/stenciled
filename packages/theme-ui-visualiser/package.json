@@ -1,22 +1,22 @@
 {
-  "name": "@stenciled/box",
+  "name": "@stenciled/theme-ui-visualiser",
   "version": "0.1.1-alpha.0",
+  "description": "Stenciled Theme UI visualiser.",
   "private": true,
-  "description": "Stenciled box component.",
   "source": "src/index.js",
-  "main": "dist/box.js",
-  "module": "dist/box.esm.js",
+  "main": "dist/theme-ui-visualiser.js",
+  "module": "dist/theme-ui-visualiser.esm.js",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/stenciled/stenciled.git",
-    "directory": "packages/box"
+    "directory": "packages/theme-ui-visualiser"
   },
-  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/box#readme",
+  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/theme-ui-visualiser#readme",
   "scripts": {
     "clean": "yarn cache clean",
-    "prepare": "microbundle --internal theme-ui --no-compress -o dist",
-    "watch": "microbundle watch --internal theme-ui --no-compress -o dist",
+    "prepare": "microbundle --no-compress -o dist",
+    "watch": "microbundle watch --no-compress -o dist",
     "storybook": "start-storybook",
     "test": "jest",
     "test:watch": "jest --watchAll",
@@ -26,22 +26,23 @@
     "access": "public"
   },
   "dependencies": {
-    "@theme-ui/components": "^0.3.1",
-    "@theme-ui/core": "^0.3.1"
+    "@theme-ui/core": "^0.3.1",
+    "react-use": "^13.27.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.7",
+    "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
-    "@storybook/react": "^5.3.14",
+    "@storybook/react": "^5.3.17",
+    "@theme-ui/core": "^0.3.1",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
     "jest": "^25.1.0",
     "microbundle": "^0.11.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.13.1"
   },
   "peerDependencies": {
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "react": "*"
   }
 }

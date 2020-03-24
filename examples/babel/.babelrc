@@ -1,0 +1,7 @@
+{
+  "presets": [
+    "@stenciled/stenciled",
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ]
+}

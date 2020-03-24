@@ -5,17 +5,20 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "storybook": "start-storybook"
+    "clean": "rm -rf node_modules/.cache",
+    "storybook": "yarn clean && start-storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.8.3",
     "@storybook/react": "^5.3.14",
+    "@stenciled/storybook-addon-theme-ui": "^0.1.1",
     "babel-loader": "^8.0.6"
   },
   "dependencies": {
-    "@stenciled/babel": "^0.1.1-alpha.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "theme-ui": "^0.3.1"
   }
 }
