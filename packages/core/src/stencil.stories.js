@@ -3,8 +3,6 @@ import React from 'react'
 import { jsx } from '@theme-ui/core'
 import { stencil } from './stencil'
 
-console.log(stencil)
-
 export default { title: 'stencil' }
 
 // const Foo = ({ stencil }) => {
