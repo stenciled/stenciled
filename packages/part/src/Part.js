@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx } from '@theme-ui/core'
-import { WrapperContext } from './context'
+import { StenciledContext } from '@stenciled/context'
 import { useMeasure } from 'react-use'
 
 const Title = ({ width, children }) => (
@@ -115,7 +115,7 @@ const useMaxChildWidth = children => {
   return { clonedChildren, width: maxWidth === 0 ? null : maxWidth }
 }
 
-export const Wrapper = ({ as, variant, children }) => {
+export const Part = ({ as, variant, children }) => {
   const { clonedChildren, width } = useMaxChildWidth(children)
   const [expanded, setExpanded] = React.useState(false)
 
@@ -128,7 +128,7 @@ export const Wrapper = ({ as, variant, children }) => {
   }
 
   return (
-    <WrapperContext.Consumer>
+    <StenciledContext.Consumer>
       {({ enabled }) => {
         if (!enabled) {
           return children
@@ -153,6 +153,6 @@ export const Wrapper = ({ as, variant, children }) => {
           </div>
         )
       }}
-    </WrapperContext.Consumer>
+    </StenciledContext.Consumer>
   )
 }

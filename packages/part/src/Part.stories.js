@@ -1,71 +1,71 @@
 /** @jsx jsx */
 import { jsx } from '@theme-ui/core'
-import { Wrapper } from './Wrapper'
+import { Part } from './Part'
 
-export default { title: 'Wrapper' }
+export default { title: 'Part' }
 
 export const withDefault = () => (
-  <Wrapper>
+  <Part>
     <div>Test</div>
-  </Wrapper>
+  </Part>
 )
 
 export const withAs = () => (
-  <Wrapper as="nav">
+  <Part as="nav">
     <div>Test</div>
-  </Wrapper>
+  </Part>
 )
 
 export const withVariant = () => (
-  <Wrapper variant="variant">
+  <Part variant="variant">
     <div>Test</div>
-  </Wrapper>
+  </Part>
 )
 
 export const withAsAndVariant = () => (
-  <Wrapper as="nav" variant="variant">
+  <Part as="nav" variant="variant">
     <div>Test</div>
-  </Wrapper>
+  </Part>
 )
 
 export const with100PercentWidth = () => (
-  <Wrapper variant="variant">
+  <Part variant="variant">
     <div sx={{ width: '100%' }}>c</div>
-  </Wrapper>
+  </Part>
 )
 
 export const withFixedWidth = () => (
-  <Wrapper variant="variant">
+  <Part variant="variant">
     <div sx={{ width: '10px' }}>c</div>
-  </Wrapper>
+  </Part>
 )
 
 export const withInlineBlock = () => (
-  <Wrapper variant="variant">
+  <Part variant="variant">
     <div sx={{ display: 'inline-block' }}>c</div>
-  </Wrapper>
+  </Part>
 )
 
 export const withMultipleChildren = () => (
-  <Wrapper variant="variant">
+  <Part variant="variant">
     <div>one</div>
     <div>two</div>
     <div>three</div>
     <div>four</div>
-  </Wrapper>
+  </Part>
 )
 
 export const withLongVariant = () => (
-  <Wrapper variant="thisisareallylongvariant.thatismadeupofmanyparts.thatarereallyverylongindeed">
+  <Part variant="thisisareallylongvariant.thatismadeupofmanyparts.thatarereallyverylongindeed">
     <div>one</div>
     <div>two</div>
     <div>three</div>
     <div>four</div>
-  </Wrapper>
+  </Part>
 )
 
 export const withOverflowHidden = () => (
-  <Wrapper as="nav" variant="variant">
+  <Part as="nav" variant="variant">
     <div sx={{ overflow: 'hidden' }}>c</div>
-  </Wrapper>
+  </Part>
 )

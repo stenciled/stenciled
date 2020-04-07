@@ -1,7 +1,7 @@
 const createStenciledImportDeclaration = t =>
   t.importDeclaration(
     [t.importSpecifier(t.identifier('jsx'), t.identifier('stenciled'))],
-    t.stringLiteral('@stenciled/theme-ui-visualiser')
+    t.stringLiteral('@stenciled/jsx')
   )
 
 const isJsxImport = node => {

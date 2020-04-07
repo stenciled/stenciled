@@ -1,0 +1,50 @@
+{
+  "name": "@stenciled/part",
+  "version": "0.1.1-alpha.0",
+  "description": "Stenciled part.",
+  "private": true,
+  "source": "src/index.js",
+  "main": "dist/core.js",
+  "module": "dist/core.esm.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stenciled/stenciled.git",
+    "directory": "packages/part"
+  },
+  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/part#readme",
+  "scripts": {
+    "clean": "yarn cache clean",
+    "prepare": "microbundle --no-compress -o dist",
+    "watch": "microbundle watch --no-compress -o dist",
+    "storybook": "start-storybook",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@stenciled/context": "^0.1.1-alpha.0",
+    "@theme-ui/core": "^0.3.1",
+    "@utilz/deepmerge": "^0.1.13",
+    "react-use": "^13.27.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
+    "@storybook/react": "^5.3.17",
+    "@theme-ui/core": "^0.3.1",
+    "babel-jest": "^25.1.0",
+    "babel-loader": "^8.0.6",
+    "jest": "^25.1.0",
+    "microbundle": "^0.11.0",
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.13.1"
+  },
+  "peerDependencies": {
+    "react": "*"
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { addons, makeDecorator } from '@storybook/addons'
-import { WrapperContext } from '@stenciled/theme-ui-visualiser'
+import { StenciledContext } from '@stenciled/part'
 
 const Decorator = ({ story, options }) => {
   const [enabled, setEnabled] = React.useState(false)
@@ -23,9 +23,9 @@ const Decorator = ({ story, options }) => {
   }, [])
 
   return (
-    <WrapperContext.Provider value={{ enabled }}>
+    <StenciledContext.Provider value={{ enabled }}>
       {currentStory}
-    </WrapperContext.Provider>
+    </StenciledContext.Provider>
   )
 }
 

@@ -17,7 +17,7 @@
     "clean": "yarn cache clean",
     "prepare": "microbundle --no-compress -o dist",
     "watch": "microbundle watch --no-compress -o dist",
-    "storybook": "start-storybook",
+    "storybook": "rm -rf ./node_modules/.cache && start-storybook",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
@@ -28,7 +28,8 @@
   "dependencies": {
     "@emotion/core": "^10.0.27",
     "@stenciled/babel-preset-stenciled": "^0.1.1-alpha.0",
-    "@stenciled/theme-ui-visualiser": "^0.1.1-alpha.0",
+    "@stenciled/jsx": "^0.1.1-alpha.0",
+    "@stenciled/part": "^0.1.1-alpha.0",
     "@storybook/addons": "^5.3.12",
     "@storybook/api": "^5.3.12",
     "@storybook/client-logger": "^5.3.12",
