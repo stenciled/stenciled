@@ -5,37 +5,7 @@ import { stencil } from './stencil'
 
 export default { title: 'stencil' }
 
-// const Foo = ({ stencil }) => {
-//   const data = {
-//     header: {
-//       title: 'title',
-//     },
-//     footer: {
-//       links: ['link 1', 'link 2'],
-//     },
-//   }
-
-//   return (
-//     <React.Fragment>
-//       <div>
-//         {stencil.header ? (
-//           stencil.header(data.header)
-//         ) : (
-//           <p>{data.header.title}</p>
-//         )}
-//       </div>
-//       <div>
-//         {stencil.footer ? (
-//           stencil.footer(data.footer)
-//         ) : (
-//           <p>{data.footer.links.join(', ')}</p>
-//         )}
-//       </div>
-//     </React.Fragment>
-//   )
-// }
-
-const Foo = stencil({
+const Component = stencil({
   header: ({ title }) => <p>default {title}</p>,
   footer: ({ links }) => <p>default {links.join(', ')}</p>,
 })(props => {
@@ -58,10 +28,10 @@ const Foo = stencil({
   )
 })
 
-export const withDefault = () => <Foo />
+export const withDefault = () => <Component />
 
 export const withHeader = () => (
-  <Foo
+  <Component
     stencil={{
       header: ({ title }) => <p css={{ fontWeight: 700 }}>{title}</p>,
     }}

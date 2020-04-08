@@ -2,6 +2,7 @@
 import { jsx } from '@theme-ui/core'
 import { Part } from '@stenciled/part'
 
+// TODO: conditionally import @stenciled/part based on env variable
 const Title = ({ width, children }) => (
   <p
     title={children}

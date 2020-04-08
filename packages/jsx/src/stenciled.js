@@ -2,7 +2,6 @@ import React from 'react'
 import { jsx } from '@theme-ui/core'
 import { Wrapper } from './Wrapper'
 
-// TODO: conditionally import @stenciled/part based on env variable
 export const stenciled = (type, props, ...children) => {
   if (!props) {
     return jsx(type, props, ...children)
