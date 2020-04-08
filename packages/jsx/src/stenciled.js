@@ -4,7 +4,6 @@ import { Wrapper } from './Wrapper'
 
 // TODO: conditionally import @stenciled/part based on env variable
 export const stenciled = (type, props, ...children) => {
-  console.log('running')
   if (!props) {
     return jsx(type, props, ...children)
   }
@@ -16,7 +15,6 @@ export const stenciled = (type, props, ...children) => {
     return jsx(type, props, ...children)
   }
 
-  console.log('returning wrapper')
   return (
     <Wrapper as={as} variant={variant}>
       {jsx(type, props, ...children)}

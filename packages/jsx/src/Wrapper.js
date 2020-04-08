@@ -44,7 +44,6 @@ export const Wrapper = ({ as, variant, children }) => {
     <Meta as={as} variant={variant} width={width} height={height} />
   )
 
-  console.log('returning part')
   return (
     <Part
       style={{

@@ -119,7 +119,6 @@ export const Part = ({ render, children, style }) => {
   return (
     <StenciledContext.Consumer>
       {({ enabled }) => {
-        console.log('enabled', enabled)
         if (!enabled) {
           return children
         }
