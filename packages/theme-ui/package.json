@@ -17,7 +17,6 @@
     "clean": "yarn cache clean",
     "prepare": "microbundle --no-compress -o dist",
     "watch": "microbundle watch --no-compress -o dist",
-    "storybook": "start-storybook",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"

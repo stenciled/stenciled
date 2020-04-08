@@ -20,26 +20,27 @@ const Title = ({ width, children }) => (
   </p>
 )
 
-const ExpandedInfo = ({ as, variant, width, height }) => {
-  return (
-    <div
-      css={{
+const ExpandedInfo = ({ render, width, height }) => (
+  <div
+    css={{
+      height,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#fff',
+      userSelect: 'none',
+    }}
+  >
+    {render &&
+      render({
+        width,
         height,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: '#fff',
-        userSelect: 'none',
-      }}
-    >
-      {variant && <Title width={width}>{variant}</Title>}
-      {as && <Title width={width}>as: {as}</Title>}
-    </div>
-  )
-}
+      })}
+  </div>
+)
 
-const Expander = ({ as, variant, expanded, onClick }) => {
+const Expander = ({ render, expanded, onClick }) => {
   const defaultProps = {
     position: 'absolute',
     top: 0,
@@ -77,10 +78,9 @@ const Expander = ({ as, variant, expanded, onClick }) => {
     >
       {expanded && (
         <ExpandedInfo
-          as={as}
-          variant={variant}
           width={expandedWidth}
           height={expandedHeight}
+          render={render}
         />
       )}
     </div>
@@ -115,16 +115,22 @@ const useMaxChildWidth = children => {
   return { clonedChildren, width: maxWidth === 0 ? null : maxWidth }
 }
 
-export const Part = ({ as, variant, children }) => {
+export const Part = ({ render, children, style }) => {
   const { clonedChildren, width } = useMaxChildWidth(children)
   const [expanded, setExpanded] = React.useState(false)
 
-  if (!as && !variant) {
-    return children
-  }
-
-  const variantStyle = {
-    border: '1px dashed #ccc',
+  let content = children
+  if (render) {
+    content = (
+      <div css={{ position: 'relative' }}>
+        <Expander
+          render={render}
+          expanded={expanded}
+          onClick={expanded => setExpanded(expanded)}
+        />
+        {clonedChildren}
+      </div>
+    )
   }
 
   return (
@@ -138,21 +144,21 @@ export const Part = ({ as, variant, children }) => {
           <div
             css={{
               width: `${width}px`,
-              ...(variant ? variantStyle : {}),
+              ...(style || {}),
             }}
           >
-            <div css={{ position: 'relative' }}>
-              <Expander
-                expanded={expanded}
-                as={as}
-                variant={variant}
-                onClick={v => setExpanded(v)}
-              />
-              {clonedChildren}
-            </div>
+            {content}
           </div>
         )
       }}
     </StenciledContext.Consumer>
   )
 }
+
+// if (!as && !variant) {
+//   return children
+// }
+
+// const variantStyle = {
+//   border: '1px dashed #ccc',
+// }
