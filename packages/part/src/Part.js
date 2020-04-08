@@ -1,24 +1,8 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx } from '@theme-ui/core'
-import { StenciledContext } from '@stenciled/context'
+import { StenciledContext } from './context'
 import { useMeasure } from 'react-use'
-
-const Title = ({ width, children }) => (
-  <p
-    title={children}
-    css={{
-      width,
-      margin: 0,
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textAlign: 'center',
-    }}
-  >
-    {children}
-  </p>
-)
 
 const ExpandedInfo = ({ render, width, height }) => (
   <div
@@ -119,23 +103,23 @@ export const Part = ({ render, children, style }) => {
   const { clonedChildren, width } = useMaxChildWidth(children)
   const [expanded, setExpanded] = React.useState(false)
 
-  let content = children
-  if (render) {
-    content = (
-      <div css={{ position: 'relative' }}>
-        <Expander
-          render={render}
-          expanded={expanded}
-          onClick={expanded => setExpanded(expanded)}
-        />
-        {clonedChildren}
-      </div>
-    )
-  }
+  const content = render ? (
+    <div css={{ position: 'relative' }}>
+      <Expander
+        render={render}
+        expanded={expanded}
+        onClick={expanded => setExpanded(expanded)}
+      />
+      {clonedChildren}
+    </div>
+  ) : (
+    children
+  )
 
   return (
     <StenciledContext.Consumer>
       {({ enabled }) => {
+        console.log('enabled', enabled)
         if (!enabled) {
           return children
         }
@@ -154,11 +138,3 @@ export const Part = ({ render, children, style }) => {
     </StenciledContext.Consumer>
   )
 }
-
-// if (!as && !variant) {
-//   return children
-// }
-
-// const variantStyle = {
-//   border: '1px dashed #ccc',
-// }

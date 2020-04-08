@@ -1,9 +1,10 @@
 import React from 'react'
 import { jsx } from '@theme-ui/core'
-import { Part } from '@stenciled/part'
+import { Wrapper } from './Wrapper'
 
 // TODO: conditionally import @stenciled/part based on env variable
 export const stenciled = (type, props, ...children) => {
+  console.log('running')
   if (!props) {
     return jsx(type, props, ...children)
   }
@@ -15,9 +16,10 @@ export const stenciled = (type, props, ...children) => {
     return jsx(type, props, ...children)
   }
 
+  console.log('returning wrapper')
   return (
-    <Part as={as} variant={variant}>
+    <Wrapper as={as} variant={variant}>
       {jsx(type, props, ...children)}
-    </Part>
+    </Wrapper>
   )
 }
