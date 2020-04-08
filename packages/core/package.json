@@ -1,18 +1,18 @@
 {
-  "name": "@stenciled/theme-ui-visualiser",
+  "name": "@stenciled/core",
   "version": "0.1.1-alpha.0",
-  "description": "Stenciled Theme UI visualiser.",
+  "description": "Stenciled Core.",
   "private": true,
   "source": "src/index.js",
-  "main": "dist/theme-ui-visualiser.js",
-  "module": "dist/theme-ui-visualiser.esm.js",
+  "main": "dist/core.js",
+  "module": "dist/core.esm.js",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/stenciled/stenciled.git",
-    "directory": "packages/theme-ui-visualiser"
+    "directory": "packages/core"
   },
-  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/theme-ui-visualiser#readme",
+  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/core#readme",
   "scripts": {
     "clean": "yarn cache clean",
     "prepare": "microbundle --no-compress -o dist",
@@ -26,7 +26,9 @@
     "access": "public"
   },
   "dependencies": {
+    "@stenciled/part": "^0.1.1-alpha.0",
     "@theme-ui/core": "^0.3.1",
+    "@utilz/deepmerge": "^0.1.13",
     "react-use": "^13.27.0"
   },
   "devDependencies": {

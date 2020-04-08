@@ -1,22 +1,23 @@
 {
-  "name": "@stenciled/storybook-addon-theme-ui",
-  "version": "0.1.1",
-  "description": "Storybook Theme UI addon.",
-  "source": "src/index.js",
-  "main": "dist/storybook-addon-theme-ui.js",
-  "module": "dist/storybook-addon-theme-ui.esm.js",
+  "name": "@stenciled/jsx",
+  "version": "0.1.1-alpha.0",
+  "description": "Stenciled Theme UI jsx.",
   "private": true,
+  "source": "src/index.js",
+  "main": "dist/jsx.js",
+  "module": "dist/jsx.esm.js",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/stenciled/stenciled.git",
-    "directory": "packages/storybook-addon-theme-ui"
+    "directory": "packages/jsx"
   },
-  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/storybook-addon-theme#readme",
+  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/jsx#readme",
   "scripts": {
     "clean": "yarn cache clean",
     "prepare": "microbundle --no-compress -o dist",
     "watch": "microbundle watch --no-compress -o dist",
+    "storybook": "rm -rf ./node_modules/.cache && start-storybook",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
@@ -25,27 +26,21 @@
     "access": "public"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.27",
-    "@stenciled/babel-preset-stenciled": "^0.1.1-alpha.0",
-    "@stenciled/jsx": "^0.1.1-alpha.0",
     "@stenciled/part": "^0.1.1-alpha.0",
-    "@storybook/addons": "^5.3.12",
-    "@storybook/api": "^5.3.12",
-    "@storybook/client-logger": "^5.3.12",
-    "@storybook/components": "^5.3.12",
-    "@storybook/core-events": "^5.3.12",
-    "@storybook/theming": "^5.3.12",
-    "@utilz/types": "^0.1.11"
+    "@theme-ui/core": "^0.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
+    "@storybook/react": "^5.3.17",
+    "@theme-ui/core": "^0.3.1",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
     "jest": "^25.1.0",
     "microbundle": "^0.11.0",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "react-test-renderer": "^16.13.1"
   },
   "peerDependencies": {
     "react": "*"

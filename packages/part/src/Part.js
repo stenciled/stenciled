@@ -1,45 +1,30 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx } from '@theme-ui/core'
-import { WrapperContext } from './context'
+import { StenciledContext } from './context'
 import { useMeasure } from 'react-use'
 
-const Title = ({ width, children }) => (
-  <p
-    title={children}
+const ExpandedInfo = ({ render, width, height }) => (
+  <div
     css={{
-      width,
-      margin: 0,
-      textOverflow: 'ellipsis',
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textAlign: 'center',
+      height,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#fff',
+      userSelect: 'none',
     }}
   >
-    {children}
-  </p>
+    {render &&
+      render({
+        width,
+        height,
+      })}
+  </div>
 )
 
-const ExpandedInfo = ({ as, variant, width, height }) => {
-  return (
-    <div
-      css={{
-        height,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: '#fff',
-        userSelect: 'none',
-      }}
-    >
-      {variant && <Title width={width}>{variant}</Title>}
-      {as && <Title width={width}>as: {as}</Title>}
-    </div>
-  )
-}
-
-const Expander = ({ as, variant, expanded, onClick }) => {
+const Expander = ({ render, expanded, onClick }) => {
   const defaultProps = {
     position: 'absolute',
     top: 0,
@@ -77,10 +62,9 @@ const Expander = ({ as, variant, expanded, onClick }) => {
     >
       {expanded && (
         <ExpandedInfo
-          as={as}
-          variant={variant}
           width={expandedWidth}
           height={expandedHeight}
+          render={render}
         />
       )}
     </div>
@@ -115,20 +99,25 @@ const useMaxChildWidth = children => {
   return { clonedChildren, width: maxWidth === 0 ? null : maxWidth }
 }
 
-export const Wrapper = ({ as, variant, children }) => {
+export const Part = ({ render, children, style }) => {
   const { clonedChildren, width } = useMaxChildWidth(children)
   const [expanded, setExpanded] = React.useState(false)
 
-  if (!as && !variant) {
-    return children
-  }
-
-  const variantStyle = {
-    border: '1px dashed #ccc',
-  }
+  const content = render ? (
+    <div css={{ position: 'relative' }}>
+      <Expander
+        render={render}
+        expanded={expanded}
+        onClick={expanded => setExpanded(expanded)}
+      />
+      {clonedChildren}
+    </div>
+  ) : (
+    children
+  )
 
   return (
-    <WrapperContext.Consumer>
+    <StenciledContext.Consumer>
       {({ enabled }) => {
         if (!enabled) {
           return children
@@ -138,21 +127,13 @@ export const Wrapper = ({ as, variant, children }) => {
           <div
             css={{
               width: `${width}px`,
-              ...(variant ? variantStyle : {}),
+              ...(style || {}),
             }}
           >
-            <div css={{ position: 'relative' }}>
-              <Expander
-                expanded={expanded}
-                as={as}
-                variant={variant}
-                onClick={v => setExpanded(v)}
-              />
-              {clonedChildren}
-            </div>
+            {content}
           </div>
         )
       }}
-    </WrapperContext.Consumer>
+    </StenciledContext.Consumer>
   )
 }
