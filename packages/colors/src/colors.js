@@ -80,7 +80,11 @@ export const color = obj => {
   }
 
   const value = normaliseHsl(obj)
-  const chromaValue = chroma(value)
+  const chromaValue = chroma({
+    h: value.h,
+    s: value.s / 100,
+    l: value.l / 100,
+  })
 
   return {
     value,

@@ -109,32 +109,32 @@ describe('color', () => {
   describe('css', () => {
     it('should return hsl by default', () => {
       const c = color({ h: 0, s: 0.5, l: 0.63567 })
-      expect(c.css()).toEqual('hsl(180,100%,50%)')
+      expect(c.css()).toEqual('hsl(0,50.27%,63.73%)')
     })
 
     it('should return hsl when specified', () => {
       const c = color({ h: 0, s: 0.5, l: 0.63567 })
-      expect(c.css('hsl')).toEqual('hsl(180,100%,50%)')
+      expect(c.css('hsl')).toEqual('hsl(0,50.27%,63.73%)')
     })
 
     it('should return hex when specified', () => {
       const c = color({ h: 0, s: 0.5, l: 0.63567 })
-      expect(c.css('hex')).toEqual('#00ffff')
+      expect(c.css('hex')).toEqual('#d17474')
     })
 
     it('should return hexa when specified', () => {
       const c = color({ h: 0, s: 0.5, l: 0.63567 })
-      expect(c.css('hexa')).toEqual('#00ffffff')
+      expect(c.css('hexa')).toEqual('#d17474ff')
     })
 
     it('should return rgb when specified', () => {
       const c = color({ h: 0, s: 0.5, l: 0.63567 })
-      expect(c.css('rgb')).toEqual('rgb(0,255,255)')
+      expect(c.css('rgb')).toEqual('rgb(209,116,116)')
     })
 
     it('should return rgba when specified', () => {
       const c = color({ h: 0, s: 0.5, l: 0.63567 })
-      expect(c.css('rgba')).toEqual('rgba(0,255,255,1)')
+      expect(c.css('rgba')).toEqual('rgba(209,116,116,1)')
     })
 
     it('should throw given an unknown format', () => {

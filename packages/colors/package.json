@@ -32,6 +32,8 @@
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/preset-env": "^7.7.6",
+    "@storybook/react": "^5.3.17",
+    "@theme-ui/core": "^0.3.1",
     "babel-jest": "^25.1.0",
     "faker": "^4.1.0",
     "jest": "^25.1.0",
