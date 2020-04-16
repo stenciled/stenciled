@@ -22,7 +22,6 @@ const round = value => Math.round(value)
 const normaliseHsl = value => {
   const clipPercentage = clip(0, 100)
 
-  console.log('value', value)
   const percentage = {
     h: value.h,
     s: value.s <= 1 ? value.s * 100 : value.s,
@@ -30,12 +29,11 @@ const normaliseHsl = value => {
   }
 
   const normalised = {
-    h: clip(0, 255)(round(percentage.h)),
-    s: clipPercentage(round(percentage.s)),
-    l: clipPercentage(round(percentage.l)),
+    h: clip(0, 255)(percentage.h),
+    s: clipPercentage(percentage.s),
+    l: clipPercentage(percentage.l),
   }
 
-  console.log('normalised', normalised)
   return normalised
 }
 
@@ -87,16 +85,24 @@ export const color = obj => {
   return {
     value,
     css: (format = 'hsl') => {
-      //   const chromaFormat = {
-      //     h: value.h,
-      //     s: value.s / 100,
-      //     l: value.l / 100,
-      //   }
-
-      //console.log('chromaFormat', chromaFormat)
-      return chromaValue.css(format)
+      switch (format) {
+        case 'hsl':
+          return chromaValue.css('hsl')
+        case 'hex':
+          return chromaValue.hex('rgb')
+        case 'hexa':
+          return chromaValue.hex('rgba')
+        case 'rgb':
+          return chromaValue.css('rgb')
+        case 'rgba':
+          return chromaValue.css('rgba')
+        default: {
+          throw new Error(`Unknown format '${format}'.`)
+        }
+      }
     },
-    toString: () => {},
+    toString: () =>
+      `HSL ${round(value.h)}, ${round(value.s)}%, ${round(value.l)}%`,
   }
 }
 
