@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from '@theme-ui/core'
-import { color as createColor } from './colors'
+import { color as createColor } from './color'
 
-export default { title: 'colors' }
+export default { title: 'color' }
 
 const Color = ({ color }) => (
   <div css={{ width: 50, height: 50, backgroundColor: color }} />
