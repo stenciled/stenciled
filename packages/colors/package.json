@@ -1,0 +1,41 @@
+{
+  "name": "@stenciled/colors",
+  "version": "0.1.1-alpha.0",
+  "description": "Stenciled colors.",
+  "private": true,
+  "source": "src/index.js",
+  "main": "dist/colors.js",
+  "module": "dist/colors.esm.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stenciled/stenciled.git",
+    "directory": "packages/colors"
+  },
+  "homepage": "https://github.com/stenciled/stenciled/tree/master/packages/colors#readme",
+  "scripts": {
+    "clean": "yarn cache clean",
+    "prepare": "microbundle --no-compress -o dist",
+    "watch": "microbundle watch --no-compress -o dist",
+    "storybook": "start-storybook",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@utilz/types": "^0.1.11",
+    "chroma-js": "^2.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.6",
+    "babel-jest": "^25.1.0",
+    "faker": "^4.1.0",
+    "jest": "^25.1.0",
+    "microbundle": "^0.11.0",
+    "prettier": "^1.19.1"
+  }
+}
