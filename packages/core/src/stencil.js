@@ -1,7 +1,10 @@
 import React from 'react'
 import { deepmerge } from '@utilz/deepmerge'
+import { Part } from '@themeprint/part'
 
-const Wrapper = ({ children }) => <div className="foo">{children}</div>
+const Wrapper = ({ children, name }) => (
+  <Part render={({ width, height }) => <p>{name}</p>}>{children}</Part>
+)
 
 export const stencil = definition => render => {
   if (!definition) {
@@ -18,7 +21,7 @@ export const stencil = definition => render => {
     return render({
       ...props,
       stencil: Object.keys(funcs).reduce((map, key) => {
-        map[key] = props => <Wrapper>{funcs[key](props)}</Wrapper>
+        map[key] = props => <Wrapper name={key}>{funcs[key](props)}</Wrapper>
         return map
       }, {}),
     })
