@@ -2,7 +2,6 @@
   "name": "@stenciled/core",
   "version": "0.1.1-alpha.0",
   "description": "Stenciled Core.",
-  "private": true,
   "source": "src/index.js",
   "main": "dist/core.js",
   "module": "dist/core.esm.js",
