@@ -1,4 +1,5 @@
 import { isNil, isObject } from '@utilz/types'
+import { deepmerge } from '@utilz/deepmerge'
 
 // Converts a stencil and definition to a definition
 // Ready to be converted to a React component
@@ -57,24 +58,18 @@ export const processStencil = (definition, stencil) => {
     throw new Error('The stencil must be an object.')
   }
 
-  return Object.keys(stencil).reduce((map, key) => {
-    map[key] = convertToDefinition(definition, stencil, key)
-    return map
-  }, {})
+  // return Object.keys(stencil).reduce((map, key) => {
+  //   map[key] = convertToDefinition(definition, stencil, key)
+  //   return map
+  // }, {})
+
+  const convertedStencil = convertToDefinition(
+    {
+      root: definition,
+    },
+    { root: stencil },
+    'root'
+  )
+
+  return deepmerge(definition, convertedStencil)
 }
-
-// stencil={{
-//   header: {
-//     title: {
-//       component: ({ stencil, Component, props }) => <p>{title}!</p>,
-//     },
-//   },
-// }}
-
-// header: {
-//   parts: {
-//     title: {
-//       component: ({})
-//     }
-//   }
-// }

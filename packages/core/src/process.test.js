@@ -36,22 +36,16 @@ describe('processStencil', () => {
     expect(
       processStencil(
         {
-          header: {
-            component: originalComponent,
-          },
+          component: originalComponent,
         },
         {
-          header: {
-            component,
-          },
+          component,
         }
       )
     ).toMatchObject({
-      header: {
-        component,
-        originalComponent,
-        props: undefined,
-      },
+      component,
+      originalComponent,
+      props: undefined,
     })
   })
 
@@ -64,36 +58,30 @@ describe('processStencil', () => {
     expect(
       processStencil(
         {
-          header: {
-            component: originalComponent,
-            parts: {
-              title: {
-                component: originalTitle,
-              },
+          component: originalComponent,
+          parts: {
+            title: {
+              component: originalTitle,
             },
           },
         },
         {
-          header: {
-            title: {
-              component: newTitle,
-            },
+          title: {
+            component: newTitle,
           },
         }
       )
     ).toMatchObject({
-      header: {
-        component: originalComponent,
-        originalComponent,
-        parts: {
-          title: {
-            component: newTitle,
-            originalComponent: originalTitle,
-            props: undefined,
-          },
+      component: originalComponent,
+      originalComponent,
+      parts: {
+        title: {
+          component: newTitle,
+          originalComponent: originalTitle,
+          props: undefined,
         },
-        props: undefined,
       },
+      props: undefined,
     })
   })
 })
