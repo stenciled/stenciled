@@ -5,35 +5,96 @@ import { stencil } from './stencil'
 
 export default { title: 'stencil' }
 
-const Component = stencil({
-  header: ({ title }) => <p>default {title}</p>,
-  footer: ({ links }) => <p>default {links.join(', ')}</p>,
-})(props => {
-  const { header, footer } = props.stencil
+// const Component = stencil({
+//   header: ({ title }) => <p>default {title}</p>,
+//   footer: ({ links }) => <p>default {links.join(', ')}</p>,
+// })(props => {
+//   const { header, footer } = props.stencil
 
-  const data = {
+//   const data = {
+//     header: {
+//       title: 'title',
+//     },
+//     footer: {
+//       links: ['link 1', 'link 2'],
+//     },
+//   }
+
+//   return (
+//     <React.Fragment>
+//       <div>{header(data.header)}</div>
+//       <div>{footer(data.footer)}</div>
+//     </React.Fragment>
+//   )
+// })
+
+const Component = stencil({
+  component: ({ stencil, ...props }) => (
+    <div {...props}>
+      {stencil.header()}
+      {stencil.footer()}
+    </div>
+  ),
+  parts: {
     header: {
-      title: 'title',
+      component: ({ stencil, ...props }) => {
+        return (
+          <div {...props}>
+            {stencil.title()}
+            {stencil.description()}
+          </div>
+        )
+      },
+      parts: {
+        title: {
+          component: ({ title }) => <p>{title}</p>,
+          props: ({ title }) => ({ title }),
+        },
+        description: {
+          component: ({ description }) => <p>{description}</p>,
+          props: ({ description }) => ({ description }),
+        },
+      },
     },
     footer: {
-      links: ['link 1', 'link 2'],
+      component: ({ footer }) => <p>{footer}</p>,
     },
-  }
-
-  return (
-    <React.Fragment>
-      <div>{header(data.header)}</div>
-      <div>{footer(data.footer)}</div>
-    </React.Fragment>
-  )
+  },
 })
 
-export const withDefault = () => <Component />
+const defaultProps = {
+  title: 'title',
+  description: 'description',
+}
+
+export const withDefault = () => <Component {...defaultProps} />
 
 export const withHeader = () => (
   <Component
+    {...defaultProps}
     stencil={{
-      header: ({ title }) => <p css={{ fontWeight: 700 }}>{title}</p>,
+      parts: {
+        header: {
+          component: ({ title }) => <p css={{ fontWeight: 700 }}>{title}</p>,
+        },
+      },
+    }}
+  />
+)
+
+export const withTitle = () => (
+  <Component
+    {...defaultProps}
+    stencil={{
+      parts: {
+        header: {
+          parts: {
+            title: {
+              component: ({ title }) => <p>{title}!</p>,
+            },
+          },
+        },
+      },
     }}
   />
 )
