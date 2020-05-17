@@ -73,10 +73,8 @@ export const withHeader = () => (
   <Component
     {...defaultProps}
     stencil={{
-      parts: {
-        header: {
-          component: ({ title }) => <p css={{ fontWeight: 700 }}>{title}</p>,
-        },
+      header: {
+        component: ({ title }) => <p css={{ fontWeight: 700 }}>{title}</p>,
       },
     }}
   />
@@ -86,13 +84,9 @@ export const withTitle = () => (
   <Component
     {...defaultProps}
     stencil={{
-      parts: {
-        header: {
-          parts: {
-            title: {
-              component: ({ title }) => <p>{title}!</p>,
-            },
-          },
+      header: {
+        title: {
+          component: ({ title }) => <p>{title}!</p>,
         },
       },
     }}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { deepmerge } from '@utilz/deepmerge'
+import { processStencil } from './process'
 import { Part } from '@themeprint/part'
 
 const Wrapper = ({ children, name }) => (
@@ -56,7 +57,7 @@ export const stencil = definition => {
   }
 
   return ({ stencil, ...props }) => {
-    const resolvedDefinition = deepmerge(definition, stencil)
+    const resolvedDefinition = processStencil(definition, stencil)
     // TODO: check stencil only contains
     // component and props properties
     // don't merge parts property
