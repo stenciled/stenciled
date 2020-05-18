@@ -43,12 +43,29 @@ const componentFromPart = ({ definition, props }) => {
 
   const stencil = Object.keys(parts).reduce((map, key) => {
     // map[key] = props => <Wrapper name={key}>{parts[key](props)}</Wrapper>
-    map[key] = () =>
+
+    const component = () =>
       componentFromPart({ definition: parts[key], props: resolvedProps })
+
+    map[key] = component
+
     return map
   }, {})
 
-  return component({ stencil, ...resolvedProps })
+  return component({
+    stencil,
+    ...(definition.originalComponent
+      ? {
+          component: definition.originalComponent({
+            stencil,
+            ...resolvedProps,
+          }),
+          props: resolvedProps,
+        }
+      : {
+          ...resolvedProps,
+        }),
+  })
 }
 
 export const stencil = definition => {
@@ -58,10 +75,6 @@ export const stencil = definition => {
 
   return ({ stencil, ...props }) => {
     const resolvedDefinition = processStencil(definition, stencil)
-    // TODO: check stencil only contains
-    // component and props properties
-    // don't merge parts property
-
     return componentFromPart({ definition: resolvedDefinition, props })
   }
 }

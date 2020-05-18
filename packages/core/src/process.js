@@ -35,7 +35,7 @@ const convertToDefinition = (definition, stencil, key) => {
 
   return {
     component: definition[key].component,
-    originalComponent: definition[key].component,
+    // originalComponent: definition[key].component,
     parts,
     props: definition[key].props,
   }
@@ -57,11 +57,6 @@ export const processStencil = (definition, stencil) => {
   if (!isObject(stencil)) {
     throw new Error('The stencil must be an object.')
   }
-
-  // return Object.keys(stencil).reduce((map, key) => {
-  //   map[key] = convertToDefinition(definition, stencil, key)
-  //   return map
-  // }, {})
 
   const convertedStencil = convertToDefinition(
     {
