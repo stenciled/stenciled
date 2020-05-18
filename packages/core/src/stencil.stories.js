@@ -6,16 +6,16 @@ import { stencil } from './stencil'
 export default { title: 'stencil' }
 
 const Component = stencil({
-  component: ({ stencil }) => (
-    <div>
+  component: ({ stencil, ...props }) => (
+    <div {...props}>
       {stencil.header()}
       {stencil.footer()}
     </div>
   ),
   parts: {
     header: {
-      component: ({ stencil }) => (
-        <div>
+      component: ({ stencil, ...props }) => (
+        <div {...props}>
           {stencil.title()}
           {stencil.description()}
         </div>
@@ -30,9 +30,11 @@ const Component = stencil({
           props: ({ description }) => ({ description }),
         },
       },
+      props: ({ title, description }) => ({ title, description }),
     },
     footer: {
       component: ({ footer }) => <p>original {footer}</p>,
+      props: ({ footer }) => ({ footer }),
     },
   },
 })
@@ -76,12 +78,14 @@ export const withWrappedOriginal = () => (
     {...defaultProps}
     stencil={{
       header: {
-        component: ({ component }) => (
-          <div style={{ border: '1px solid #ccc' }}>
-            <p>wrapped header</p>
-            {component}
-          </div>
-        ),
+        component: ({ stencil, Component, props }) => {
+          return (
+            <div style={{ border: '1px solid #ccc' }}>
+              <p>wrapped header</p>
+              <Component stencil={stencil} {...props} />
+            </div>
+          )
+        },
       },
     }}
   />
@@ -92,10 +96,12 @@ export const withStyledOriginal = () => (
     {...defaultProps}
     stencil={{
       header: {
-        component: ({ component }) => {
-          console.log('compontent', component)
-          //return component()
-          return component
+        component: ({ stencil, Component, props }) => {
+          const Fancy = styled(Component)`
+            color: hotpink;
+          `
+
+          return <Fancy stencil={stencil} />
         },
       },
     }}

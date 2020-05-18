@@ -56,10 +56,7 @@ const componentFromPart = ({ definition, props }) => {
     stencil,
     ...(definition.originalComponent
       ? {
-          component: definition.originalComponent({
-            stencil,
-            ...resolvedProps,
-          }),
+          Component: definition.originalComponent,
           props: resolvedProps,
         }
       : {
